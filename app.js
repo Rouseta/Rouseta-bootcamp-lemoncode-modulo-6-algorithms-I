@@ -67,5 +67,12 @@ input.setAttribute("value", 5);
 input.addEventListener("change", event => console.log(event.target.value));
 var main = document.getElementById("main");
 const button = document.getElementById("btnCalculate")
-button.addEventListener("click", console.log("el botón funciona"))
+button.addEventListener("click", console.log("El botón funciona"))
+//Calcular valor subtotal
+let subtotal = 0
+for (let element of products) {
+    subtotal.push(element.price * element.units)
+    //coger input.value e input.unit de forma dinámica
+}
+
 main.appendChild(input);
