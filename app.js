@@ -1,3 +1,6 @@
+const LOWER_TYPE = 21;
+const REGULAR_TYPE = 4;
+const EXEMPT_TYPE = 0;
 const products = [
     {
         description: "Goma de borrar",
@@ -63,4 +66,6 @@ input.setAttribute("type", "number");
 input.setAttribute("value", 5);
 input.addEventListener("change", event => console.log(event.target.value));
 var main = document.getElementById("main");
+const button = document.getElementById("btnCalculate")
+button.addEventListener("click", console.log("el botón funciona"))
 main.appendChild(input);
