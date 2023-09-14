@@ -59,20 +59,22 @@ const products = [
         units: 0,
     },
 ];
-
+var main = document.getElementById("main");
 var input = document.createElement("input");
+var span = document.createElement("span")
+main.appendChild(input);
 input.setAttribute("class", "product-unit");
 input.setAttribute("type", "number");
 input.setAttribute("value", 5);
 input.addEventListener("change", event => console.log(event.target.value));
-var main = document.getElementById("main");
+
 const button = document.getElementById("btnCalculate")
 button.addEventListener("click", console.log("El botón funciona"))
-//Calcular valor subtotal
-let subtotal = 0
+
 for (let element of products) {
-    subtotal.push(element.price * element.units)
-    //coger input.value e input.unit de forma dinámica
+    let descriptionDiv = document.createElement("div");
+    descriptionDiv.textContent = element.description
+    main.appendChild(descriptionDiv)
+
 }
 
-main.appendChild(input);
