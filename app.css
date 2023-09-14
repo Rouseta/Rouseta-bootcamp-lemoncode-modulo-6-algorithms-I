@@ -1,5 +1,10 @@
 .container {
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 500px;
+  gap:5px;
+}
+.input{
+    width: 25px;
 }

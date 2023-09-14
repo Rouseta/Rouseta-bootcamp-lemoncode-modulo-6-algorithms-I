@@ -64,14 +64,15 @@ var main = document.getElementById("main");
 for (let element of products) {
     let container = document.createElement("div");
     main.appendChild(container)
-    let descriptionElement = document.createElement("div");
-    descriptionElement.textContent = element.description
+    let descriptionElement = document.createElement("ol");
+    descriptionElement.textContent = `${element.description} ${element.price} euros`
     container.appendChild(descriptionElement);
-    container.classList.add("container")
+    container.classList.add("container");
     var input = document.createElement("input");
+    input.classList.add("input");
     input.setAttribute("class", "product-unit");
     input.setAttribute("type", "number");
-    input.setAttribute("value", 5);
+    input.setAttribute("value", 0);
     input.addEventListener("change", event => console.log(event.target.value));
     container.appendChild(input);
 
