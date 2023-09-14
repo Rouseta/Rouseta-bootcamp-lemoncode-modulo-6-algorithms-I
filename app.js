@@ -60,21 +60,24 @@ const products = [
     },
 ];
 var main = document.getElementById("main");
-var input = document.createElement("input");
-var span = document.createElement("span")
-main.appendChild(input);
-input.setAttribute("class", "product-unit");
-input.setAttribute("type", "number");
-input.setAttribute("value", 5);
-input.addEventListener("change", event => console.log(event.target.value));
+
+for (let element of products) {
+    let container = document.createElement("div");
+    main.appendChild(container)
+    let descriptionElement = document.createElement("div");
+    descriptionElement.textContent = element.description
+    container.appendChild(descriptionElement);
+    var input = document.createElement("input");
+    input.setAttribute("class", "product-unit");
+    input.setAttribute("type", "number");
+    input.setAttribute("value", 5);
+    input.addEventListener("change", event => console.log(event.target.value));
+    container.appendChild(input);
+
+}
 
 const button = document.getElementById("btnCalculate")
 button.addEventListener("click", console.log("El botón funciona"))
 
-for (let element of products) {
-    let descriptionDiv = document.createElement("div");
-    descriptionDiv.textContent = element.description
-    main.appendChild(descriptionDiv)
 
-}
 
