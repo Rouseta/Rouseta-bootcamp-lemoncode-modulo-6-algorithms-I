@@ -59,6 +59,7 @@ const products = [
         units: 0,
     },
 ];
+
 var main = document.getElementById("main");
 
 for (let element of products) {
@@ -75,11 +76,10 @@ for (let element of products) {
     input.setAttribute("value", 0);
     input.addEventListener("change", event => console.log(event.target.value));
     container.appendChild(input);
-
 }
 
 const button = document.getElementById("btnCalculate")
 button.addEventListener("click", console.log("El botón funciona"))
 
-
+// Cálculo de factura
 
