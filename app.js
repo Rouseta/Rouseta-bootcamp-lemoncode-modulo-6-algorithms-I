@@ -67,6 +67,7 @@ for (let element of products) {
     let descriptionElement = document.createElement("div");
     descriptionElement.textContent = element.description
     container.appendChild(descriptionElement);
+    container.classList.add("container")
     var input = document.createElement("input");
     input.setAttribute("class", "product-unit");
     input.setAttribute("type", "number");
