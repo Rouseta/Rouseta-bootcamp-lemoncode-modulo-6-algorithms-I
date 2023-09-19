@@ -78,8 +78,19 @@ for (let element of products) {
     container.appendChild(input);
 }
 
-const button = document.getElementById("btnCalculate")
-button.addEventListener("click", console.log("El botón funciona"))
+
 
 // Cálculo de factura
+//Precio total = precio unitario * unidades
+const CalculateTotalPrice = () => {
+    const units = document.getElementById("product-unit").value
+    for (let element of products) {
+        unitPrice = element.price
+        totalPrice = element.price * units
+    }
+    return totalPrice
+}
+console.log(CalculateTotalPrice(products))
 
+const button = document.getElementById("btnCalculate")
+button.addEventListener("click", CalculateTotalPrice)
