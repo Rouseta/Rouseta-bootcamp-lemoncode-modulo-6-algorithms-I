@@ -61,6 +61,8 @@ const products = [
 ];
 
 var main = document.getElementById("main");
+let subtotal = document.getElementById("subtotal")
+let totalPrice = 0;
 
 for (let element of products) {
     let container = document.createElement("div");
@@ -70,27 +72,36 @@ for (let element of products) {
     container.appendChild(descriptionElement);
     container.classList.add("container");
     var input = document.createElement("input");
-    input.classList.add("input");
+    //input.classList.add("input");
     input.setAttribute("class", "product-unit");
     input.setAttribute("type", "number");
     input.setAttribute("value", 0);
-    input.addEventListener("change", event => console.log(event.target.value));
+    //input.addEventListener("change", event => console.log(event.target.value));
     container.appendChild(input);
 }
 
 
 
+
 // Cálculo de factura
 //Precio total = precio unitario * unidades
+
 const CalculateTotalPrice = () => {
-    const units = document.getElementById("product-unit").value
-    for (let element of products) {
-        unitPrice = element.price
-        totalPrice = element.price * units
+
+    const unitInputs = document.getElementsByClassName("product-unit");
+    console.log(unitInputs)
+    for (let i = 0; i < unitInputs.length; i++) {
+        const units = Number(unitInputs[i].value);
+        const productPrice = Number(products[i].price);
+        totalPrice += productPrice * units;
     }
-    return totalPrice
+
+    return subtotal.innerHTML = `<p>${totalPrice.toFixed(2)}</p>`;
 }
-console.log(CalculateTotalPrice(products))
+
+
+
 
 const button = document.getElementById("btnCalculate")
 button.addEventListener("click", CalculateTotalPrice)
+
