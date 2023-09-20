@@ -64,20 +64,24 @@ var main = document.getElementById("main");
 let subtotal = document.getElementById("subtotal")
 let totalPrice = 0;
 
-for (let element of products) {
-    let container = document.createElement("div");
-    main.appendChild(container)
-    let descriptionElement = document.createElement("ol");
-    descriptionElement.textContent = `${element.description} ${element.price} euros`
-    container.appendChild(descriptionElement);
-    container.classList.add("container");
-    var input = document.createElement("input");
-    //input.classList.add("input");
-    input.setAttribute("class", "product-unit");
-    input.setAttribute("type", "number");
-    input.setAttribute("value", 0);
-    //input.addEventListener("change", event => console.log(event.target.value));
-    container.appendChild(input);
+const renderProductList = () => {
+    for (let element of products) {
+        let container = document.createElement("div");
+        main.appendChild(container)
+        let descriptionElement = document.createElement("ol");
+        descriptionElement.textContent = `${element.description} ${element.price} euros`
+        container.appendChild(descriptionElement);
+        container.classList.add("container");
+        var input = document.createElement("input");
+        input.setAttribute("class", "product-unit");
+        input.setAttribute("type", "number");
+        input.setAttribute("value", 0);
+        input.addEventListener("change", event => {
+            element.units = Number(event.target.value)
+
+        })
+        container.appendChild(input);
+    }
 }
 
 
@@ -85,23 +89,38 @@ for (let element of products) {
 
 // Cálculo de factura
 //Precio total = precio unitario * unidades
+// const CalculateTotalPrice = () => {
+//     const units = document.getElementsByClassName("product-unit")
 
-const CalculateTotalPrice = () => {
 
-    const unitInputs = document.getElementsByClassName("product-unit");
-    console.log(unitInputs)
-    for (let i = 0; i < unitInputs.length; i++) {
-        const units = Number(unitInputs[i].value);
+//     for (let element of units) {
+
+//         unitPrice = Number(element.price)
+//         totalPrice += unitPrice * Number(element.value)
+//         console.log(element)
+
+
+//     }
+
+//     return subtotal.innerHTML = `<p>${totalPrice}</p>`;
+// }
+renderProductList()
+
+const calculateTotalPrice = () => {
+    for (let i = 0; i < products.length; i++) {
+        const units = Number(products[i].units);
         const productPrice = Number(products[i].price);
         totalPrice += productPrice * units;
     }
-
+    console.log(products)
     return subtotal.innerHTML = `<p>${totalPrice.toFixed(2)}</p>`;
+}
+const calculateIVA = () => {
+
 }
 
 
 
 
 const button = document.getElementById("btnCalculate")
-button.addEventListener("click", CalculateTotalPrice)
-
+button.addEventListener("click", calculateTotalPrice)
