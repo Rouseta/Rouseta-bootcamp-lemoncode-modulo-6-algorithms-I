@@ -1,5 +1,5 @@
-const LOWER_TYPE = 21;
-const REGULAR_TYPE = 4;
+const REGULAR_TYPE = 21;
+const LOWER_TYPE = 4;
 const EXEMPT_TYPE = 0;
 const products = [
     {
@@ -62,6 +62,7 @@ const products = [
 
 var main = document.getElementById("main");
 let subtotal = document.getElementById("subtotal")
+let withIva = document.getElementById("iva")
 let totalPrice = 0;
 
 const renderProductList = () => {
@@ -112,15 +113,34 @@ const calculateTotalPrice = () => {
         const productPrice = Number(products[i].price);
         totalPrice += productPrice * units;
     }
-    console.log(products)
+
     return subtotal.innerHTML = `<p>${totalPrice.toFixed(2)}</p>`;
 }
 const calculateIVA = () => {
 
+    for (let i = 0; i < products.length; i++) {
+        let totalIVA = 0
+        const units = Number(products[i].units);
+        const productPrice = Number(products[i].price);
+        const iva = Number(products[i].tax);
+        const plusIva = (units * productPrice) + (iva / 100)
+        totalIVA += plusIva
+
+        return withIva.innerHTML = `<p>${totalIVA}</p>`;
+    }
+
 }
+
+const globalFunction = () => {
+    calculateTotalPrice()
+    calculateIVA()
+}
+
+
+
 
 
 
 
 const button = document.getElementById("btnCalculate")
-button.addEventListener("click", calculateTotalPrice)
+button.addEventListener("click", globalFunction)
