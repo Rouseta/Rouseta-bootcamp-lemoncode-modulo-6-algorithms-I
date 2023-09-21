@@ -6,5 +6,10 @@
   gap:5px;
 }
 .product-unit{
-    width: 25px;
+    width: 32px;
+
+}
+.footer {
+ border: solid 2px green; 
+ margin-bottom: 8px;
 }
